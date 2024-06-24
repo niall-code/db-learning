@@ -87,9 +87,21 @@ niall_caplis = Programmer(
 # session.add(margaret_hamilton)
 # session.add(bill_gates)
 # session.add(tim_berners_lee)
-session.add(niall_caplis)
+# session.add(niall_caplis)
 
-session.commit()
+# programmer = session.query(Programmer).filter_by(id=7).first()
+# programmer.famous_for = "The Machine"
+
+
+people = session.query(Programmer)
+for person in people:
+    if person.gender == "F":
+        person.gender = "Female"
+    elif person.gender == "M":
+        person.gender = "Male"
+    else:
+        print("Gender not defined")
+    session.commit()
 
 
 programmers = session.query(Programmer)
